@@ -5,9 +5,9 @@ require "feed_tools"
 Gem::Specification.new do |s|
     s.name        = "feedtools"
     s.version     = FeedTools::FEED_TOOLS_VERSION::STRING
-    s.authors     = ["Bob Aman"]
-    s.email       = ["bob@sporkmonger.com"]
-    s.homepage    = "http://sporkmonger.com/projects/feedtools"
+    s.authors     = ["Bob Aman", "Alex Oberhauser"]
+    s.email       = ["bob@sporkmonger.com", "alex.oberhauser@sigimera.org"]
+    s.homepage    = "https://github.com/obale/feedtools"
     s.summary     = "Parsing, generation, and caching system for xml news feeds."
     s.description = "Implements a simple system for handling xml news feeds with caching."
     s.files       = Dir["{app,config,db,lib}/**/*"] + ["CHANGELOG", "Rakefile", "README"]
