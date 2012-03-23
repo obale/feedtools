@@ -1,9 +1,9 @@
 require 'rubygems'
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rdoc/task'
 require 'rake/packagetask'
-require 'rake/gempackagetask'
+require 'rubygems/package_task'
 require 'rake/contrib/rubyforgepublisher'
 
 require File.join(File.dirname(__FILE__), 'lib/feed_tools', 'version')
@@ -146,11 +146,11 @@ spec = Gem::Specification.new do |s|
   s.rubyforge_project = "feedtools"
 end
   
-Rake::GemPackageTask.new(spec) do |p|
-  p.gem_spec = spec
-  p.need_tar = true
-  p.need_zip = true
-end
+#Rake::GemPackageTask.new(spec) do |p|
+#  p.gem_spec = spec
+#  p.need_tar = true
+#  p.need_zip = true
+#end
 
 task :profile do
   $:.unshift(File.dirname(__FILE__) + '/lib')
