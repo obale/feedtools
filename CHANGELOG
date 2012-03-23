@@ -1,3 +1,6 @@
+=== Feedtools 0.2.30
+  * Fixing DEPRECATION warnings
+  * Adding a .gemspec and Gemfile
 === Feedtools 0.2.29
   * fixed bug with utf-8 content in resolve_relative_uris
 === FeedTools 0.2.28
