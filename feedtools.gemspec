@@ -12,8 +12,6 @@ Gem::Specification.new do |s|
     s.description = "Implements a simple system for handling xml news feeds with caching."
     s.files       = Dir["{app,config,db,lib}/**/*"] + ["CHANGELOG.rdoc", "Rakefile", "README.rdoc"]
 
-    s.rdoc_options = ["--main", "README.rdoc"]
-
     s.add_dependency 'activerecord'
     s.add_dependency 'uuidtools'
     s.add_dependency 'builder'
