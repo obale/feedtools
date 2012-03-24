@@ -53,6 +53,7 @@ FEED_TOOLS_NAMESPACES = {
   "dcterms" => "http://purl.org/dc/terms/",
   "email" => "http://purl.org/rss/1.0/modules/email/",
   "ev" => "http://purl.org/rss/1.0/modules/event/",
+  "gdacs" => "http://www.gdacs.org",
   "icbm" => "http://postneo.com/icbm/",
   "image" => "http://purl.org/rss/1.0/modules/image/",
   "indexing" => "urn:atom-extension:indexing",
