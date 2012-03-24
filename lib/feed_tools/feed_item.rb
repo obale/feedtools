@@ -119,7 +119,7 @@ module FeedTools
             self.gdacs_todate
             self.gdacs_eventtype
             self.gdacs_severity
-            self.gdacs_popultation
+            self.gdacs_population
             self.gdacs_version
             self.gdacs_eventid
             self.gdacs_episodeid
@@ -1683,12 +1683,6 @@ module FeedTools
                 @gdacs_eventname = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
                         ["gdacs:eventname/text()"], :select_result_value => true))
-                if @gdacs_eventname
-                    parent_feed = self.feed
-                    if !parent_feed.nil?
-                        @gdacs_eventname = parent_feed.gdacs_eventname
-                    end
-                end
             end
             return @gdacs_eventname
         end
@@ -1702,12 +1696,6 @@ module FeedTools
                 @gdacs_alertlevel = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
                         ["gdacs:alertlevel/text()"], :select_result_value => true))
-                if @gdacs_alertlevel
-                    parent_feed = self.feed
-                    if !parent_feed.nil?
-                        @gdacs_alertlevel = parent_feed.gdacs_alertlevel
-                    end
-                end
             end
             return @gdacs_alertlevel
         end
@@ -1721,12 +1709,6 @@ module FeedTools
                 @gdacs_country = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
                         ["gdacs:country/text()"], :select_result_value => true))
-                if @gdacs_country
-                    parent_feed = self.feed
-                    if !parent_feed.nil?
-                        @gdacs_country = parent_feed.gdacs_country
-                    end
-                end
             end
             return @gdacs_country
         end
@@ -1737,15 +1719,9 @@ module FeedTools
 
         def gdacs_fromdate
             if @gdacs_fromdate.nil?
-                @gdacs_fromdate= FeedTools::HtmlHelper.unescape_entities(
+                @gdacs_fromdate = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
                         ["gdacs:fromdate/text()"], :select_result_value => true))
-                if @gdacs_fromdate
-                    parent_feed = self.feed
-                    if !parent_feed.nil?
-                        @gdacs_fromdate = parent_feed.gdacs_fromdate
-                    end
-                end
             end
             return @gdacs_fromdate
         end
@@ -1756,21 +1732,106 @@ module FeedTools
 
         def gdacs_todate
             if @gdacs_todate.nil?
-                @gdacs_todate= FeedTools::HtmlHelper.unescape_entities(
+                @gdacs_todate = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
                         ["gdacs:todate/text()"], :select_result_value => true))
-                if @gdacs_todate
-                    parent_feed = self.feed
-                    if !parent_feed.nil?
-                        @gdacs_todate = parent_feed.gdacs_todate
-                    end
-                end
             end
             return @gdacs_todate
         end
 
         def gdacs_todate=(new_gdacs_todate)
             @gdacs_todate = new_gdacs_todate
+        end
+
+        def gdacs_eventtype
+            if @gdacs_eventtype.nil?
+                @gdacs_eventtype = FeedTools::HtmlHelper.unescape_entities(
+                    FeedTools::XmlHelper.try_xpaths(self.root_node,
+                        ["gdacs:eventtype/text()"], :select_result_value => true))
+            end
+            return @gdacs_eventtype
+        end
+
+        def gdacs_eventtype=(new_gdacs_eventtype)
+            @gdacs_eventtype = new_gdacs_eventtype
+        end
+
+        def gdacs_severity
+            if @gdacs_severity.nil?
+                @gdacs_severity = FeedTools::HtmlHelper.unescape_entities(
+                    FeedTools::XmlHelper.try_xpaths(self.root_node,
+                        ["gdacs:severity/text()"], :select_result_value => true))
+            end
+            return @gdacs_severity
+        end
+
+        def gdacs_severity=(new_gdacs_severity)
+            @gdacs_severity = new_gdacs_severity
+        end
+
+        def gdacs_population
+            if @gdacs_population.nil?
+                @gdacs_population = FeedTools::HtmlHelper.unescape_entities(
+                    FeedTools::XmlHelper.try_xpaths(self.root_node,
+                        ["gdacs:population/text()"], :select_result_value => true))
+            end
+            return @gdacs_population
+        end
+
+        def gdacs_population=(new_gdacs_population)
+            @gdacs_population = new_gdacs_population
+        end
+
+        def gdacs_version
+            if @gdacs_version.nil?
+                @gdacs_version = FeedTools::HtmlHelper.unescape_entities(
+                    FeedTools::XmlHelper.try_xpaths(self.root_node,
+                        ["gdacs:version/text()"], :select_result_value => true))
+            end
+            return @gdacs_version
+        end
+
+        def gdacs_version=(new_gdacs_version)
+            @gdacs_version = new_gdacs_version
+        end
+
+        def gdacs_eventid
+            if @gdacs_eventid.nil?
+                @gdacs_eventid = FeedTools::HtmlHelper.unescape_entities(
+                    FeedTools::XmlHelper.try_xpaths(self.root_node,
+                        ["gdacs:eventid/text()"], :select_result_value => true))
+            end
+            return @gdacs_eventid
+        end
+
+        def gdacs_eventid=(new_gdacs_eventid)
+            @gdacs_eventid = new_gdacs_eventid
+        end
+
+        def gdacs_episodeid
+            if @gdacs_episodeid.nil?
+                @gdacs_episodeid = FeedTools::HtmlHelper.unescape_entities(
+                    FeedTools::XmlHelper.try_xpaths(self.root_node,
+                        ["gdacs:episodeid/text()"], :select_result_value => true))
+            end
+            return @gdacs_episodeid
+        end
+
+        def gdacs_episodeid=(new_gdacs_episodeid)
+            @gdacs_episodeid = new_gdacs_episodeid
+        end
+
+        def gdacs_vulnerability
+            if @gdacs_vulnerability.nil?
+                @gdacs_vulnerability = FeedTools::HtmlHelper.unescape_entities(
+                    FeedTools::XmlHelper.try_xpaths(self.root_node,
+                        ["gdacs:vulnerability/text()"], :select_result_value => true))
+            end
+            return @gdacs_vulnerability
+        end
+
+        def gdacs_vulnerability=(new_gdacs_vulnerability)
+            @gdacs_vulnerability = new_gdacs_vulnerability
         end
 
         # Returns the contents of the itunes:author element
