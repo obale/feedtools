@@ -3,3 +3,4 @@ Gemfile.lock
 vendor/cache
 feedtools-*.gem
 rdoc/
+doc/

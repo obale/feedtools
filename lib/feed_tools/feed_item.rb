@@ -1693,6 +1693,7 @@ module FeedTools
             end
         end
 
+        # Returns a gdacs event name if available
         def gdacs_eventname
             if @gdacs_eventname.nil?
                 @gdacs_eventname = FeedTools::HtmlHelper.unescape_entities(
@@ -1702,10 +1703,12 @@ module FeedTools
             return @gdacs_eventname
         end
 
+        # Sets the gdacs event name
         def gdacs_eventname=(new_gdacs_eventname)
             @gdacs_eventname = new_gdacs_eventname
         end
 
+	# Returns the gdacs alert level
         def gdacs_alertlevel
             if @gdacs_alertlevel.nil?
                 @gdacs_alertlevel = FeedTools::HtmlHelper.unescape_entities(
@@ -1715,10 +1718,12 @@ module FeedTools
             return @gdacs_alertlevel
         end
 
+	# Sets the gdacs alert level
         def gdacs_alertlevel=(new_gdacs_alertlevel)
             @gdacs_alertlevel = new_gdacs_alertlevel
         end
 
+	# Returns the gdacs country
         def gdacs_country
             if @gdacs_country.nil?
                 @gdacs_country = FeedTools::HtmlHelper.unescape_entities(
@@ -1728,10 +1733,12 @@ module FeedTools
             return @gdacs_country
         end
 
+	# Sets the gdacs country
         def gdacs_country=(new_gdacs_country)
             @gdacs_country = new_gdacs_country
         end
 
+	# Returns the crisis start date
         def gdacs_fromdate
             if @gdacs_fromdate.nil?
                 @gdacs_fromdate = FeedTools::HtmlHelper.unescape_entities(
@@ -1741,10 +1748,12 @@ module FeedTools
             return @gdacs_fromdate
         end
 
+	# Sets the crisis start date
         def gdacs_fromdate=(new_gdacs_fromdate)
             @gdacs_fromdate = new_gdacs_fromdate
         end
 
+	# Returns the crisis end date
         def gdacs_todate
             if @gdacs_todate.nil?
                 @gdacs_todate = FeedTools::HtmlHelper.unescape_entities(
@@ -1754,10 +1763,12 @@ module FeedTools
             return @gdacs_todate
         end
 
+	# Sets the crisis end date
         def gdacs_todate=(new_gdacs_todate)
             @gdacs_todate = new_gdacs_todate
         end
 
+	# Returns the eventy type as shortcut
         def gdacs_eventtype
             if @gdacs_eventtype.nil?
                 @gdacs_eventtype = FeedTools::HtmlHelper.unescape_entities(
@@ -1767,10 +1778,12 @@ module FeedTools
             return @gdacs_eventtype
         end
 
+	# Sets the eventy type as shortcut
         def gdacs_eventtype=(new_gdacs_eventtype)
             @gdacs_eventtype = new_gdacs_eventtype
         end
 
+	# Returns the severity as human readable string
         def gdacs_severity
             if @gdacs_severity.nil?
                 @gdacs_severity = FeedTools::HtmlHelper.unescape_entities(
@@ -1780,10 +1793,12 @@ module FeedTools
             return @gdacs_severity
         end
 
+	# Sets the severity as human readable string
         def gdacs_severity=(new_gdacs_severity)
             @gdacs_severity = new_gdacs_severity
         end
 
+	# Returns the population as human readable string
         def gdacs_population
             if @gdacs_population.nil?
                 @gdacs_population = FeedTools::HtmlHelper.unescape_entities(
@@ -1793,10 +1808,12 @@ module FeedTools
             return @gdacs_population
         end
 
+	# Sets the population as human readable string
         def gdacs_population=(new_gdacs_population)
             @gdacs_population = new_gdacs_population
         end
 
+	# Returns the gdacs version
         def gdacs_version
             if @gdacs_version.nil?
                 @gdacs_version = FeedTools::HtmlHelper.unescape_entities(
@@ -1806,10 +1823,12 @@ module FeedTools
             return @gdacs_version
         end
 
+	# Sets the gdacs version
         def gdacs_version=(new_gdacs_version)
             @gdacs_version = new_gdacs_version
         end
 
+	# Returns the gdacs event identifier
         def gdacs_eventid
             if @gdacs_eventid.nil?
                 @gdacs_eventid = FeedTools::HtmlHelper.unescape_entities(
@@ -1819,10 +1838,12 @@ module FeedTools
             return @gdacs_eventid
         end
 
+	# Sets the gdacs event identifier
         def gdacs_eventid=(new_gdacs_eventid)
             @gdacs_eventid = new_gdacs_eventid
         end
 
+	# Returns the gdacs episode identifier
         def gdacs_episodeid
             if @gdacs_episodeid.nil?
                 @gdacs_episodeid = FeedTools::HtmlHelper.unescape_entities(
@@ -1832,10 +1853,12 @@ module FeedTools
             return @gdacs_episodeid
         end
 
+	# Sets the gdacs episode identifier
         def gdacs_episodeid=(new_gdacs_episodeid)
             @gdacs_episodeid = new_gdacs_episodeid
         end
 
+	# Returns the vulnerability as human readable string
         def gdacs_vulnerability
             if @gdacs_vulnerability.nil?
                 @gdacs_vulnerability = FeedTools::HtmlHelper.unescape_entities(
@@ -1845,6 +1868,7 @@ module FeedTools
             return @gdacs_vulnerability
         end
 
+	# Sets the vulnerability as human readable string
         def gdacs_vulnerability=(new_gdacs_vulnerability)
             @gdacs_vulnerability = new_gdacs_vulnerability
         end
@@ -1858,6 +1882,7 @@ module FeedTools
             @entries << new_entry
         end
 
+	# Returns an array of FeedTools::FeedItem::GdacsResource objects
         def gdacs_resources
             if @gdacs_resources.nil?
                 raw_entries = FeedTools::XmlHelper.select_not_blank([
@@ -1883,6 +1908,7 @@ module FeedTools
             return @gdacs_resources
         end
 
+	# Sets an array of FeedTools::FeedItem::GdacsResource objects
         def gdacs_resources=(new_gdacs_resources)
             for entry in new_gdacs_resources
                 unless entry.kind_of?  FeedTools::FeedItem::GdacsResource

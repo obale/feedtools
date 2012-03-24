@@ -83,6 +83,7 @@ module FeedTools
             @root_node = new_root_node
         end
 
+        # Returns the URL pointing to the gdacs resource
         def link
             if @link.nil?
                 @link = FeedTools::HtmlHelper.unescape_entities(
@@ -95,10 +96,12 @@ module FeedTools
             return @link
         end
 
+        # Sets the URL pointing to the gdacs resource
         def link=(new_link)
             @link = new_link
         end
 
+        # Returns the resource type, e.g. image, xml, data, html
         def type
             if @type.nil?
                 @type = FeedTools::HtmlHelper.unescape_entities(
@@ -108,10 +111,12 @@ module FeedTools
             return @type
         end
 
+        # Sets the resource type, e.g. image, xml, data, html
         def type=(new_type)
             @type = new_type
         end
 
+        # Returns the source from where the resource comes
         def source
             if @source.nil?
                 @source = FeedTools::HtmlHelper.unescape_entities(
@@ -121,10 +126,12 @@ module FeedTools
             return @source
         end
 
+        # Sets the source from where the resource comes
         def source=(new_source)
             @source = new_source
         end
 
+        # Returns the title of the resource
         def gdacs_title
             if @gdacs_title.nil?
                 @gdacs_title = FeedTools::HtmlHelper.unescape_entities(
@@ -134,10 +141,12 @@ module FeedTools
             return @gdacs_title
         end
 
+        # Sets the title of the resource
         def gdacs_title=(new_gdacs_title)
             @gdacs_title = new_gdacs_title
         end
 
+        # Returns the description of the resource
         def gdacs_description
             if @gdacs_description.nil?
                 @gdacs_description = FeedTools::HtmlHelper.unescape_entities(
@@ -147,10 +156,12 @@ module FeedTools
             return @gdacs_description
         end
 
+        # Sets the description of the resource
         def gdacs_description=(new_gdacs_description)
             @gdacs_description = new_gdacs_description
         end
 
+        # Returns the access level of the resource, e.g. public, private
         def gdacs_accesslevel
             if @gdacs_accesslevel.nil?
                 @gdacs_accesslevel = FeedTools::HtmlHelper.unescape_entities(
@@ -160,10 +171,12 @@ module FeedTools
             return @gdacs_accesslevel
         end
 
+        # Sets the access level of the resource, e.g. public, private
         def gdacs_accesslevel=(new_gdacs_accesslevel)
             @gdacs_accesslevel = new_gdacs_accesslevel
         end
 
+        # Returns the acknowlegements of the resource
         def gdacs_acknowledgements
             if @gdacs_acknowledgements.nil?
                 @gdacs_acknowledgements = FeedTools::HtmlHelper.unescape_entities(
@@ -173,10 +186,13 @@ module FeedTools
             return @gdacs_acknowledgements
         end
 
+        # Sets the acknowlegements of the resource
         def gdacs_acknowledgements=(new_gdacs_acknowledgements)
             @gdacs_acknowledgements = new_gdacs_acknowledgements
         end
 
+        # Returns the XSLT script that is used to transform the XML. Only
+        # available if 'type' is xml.
         def gdacs_xslt
             if @gdacs_xslt.nil?
                 @gdacs_xslt = FeedTools::HtmlHelper.unescape_entities(
@@ -186,6 +202,7 @@ module FeedTools
             return @gdacs_xslt
         end
 
+        # Sets the XSLT script that is used to transform the XML.
         def gdacs_xslt=(new_gdacs_xslt)
             @gdacs_xslt = new_gdacs_xslt
         end
