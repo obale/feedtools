@@ -27,6 +27,8 @@ module FeedTools
             self.feed_version
 
             self.link
+            self.type
+            self.source
 
             self.gdacs_title
             self.gdacs_description
@@ -92,8 +94,34 @@ module FeedTools
             return @link
         end
 
-        def gdacs_link=(new_gdacs_link)
-            @gdacs_link = new_gdacs_link
+        def link=(new_link)
+            @link = new_link
+        end
+
+        def type
+            if @type.nil?
+                @type = FeedTools::HtmlHelper.unescape_entities(
+                    FeedTools::XmlHelper.try_xpaths(self.root_node,
+                                                    ["@type"], :select_result_value => true))
+            end
+            return @type
+        end
+
+        def type=(new_type)
+            @type = new_type
+        end
+
+        def source
+            if @source.nil?
+                @source = FeedTools::HtmlHelper.unescape_entities(
+                    FeedTools::XmlHelper.try_xpaths(self.root_node,
+                                                    ["@source"], :select_result_value => true))
+            end
+            return @source
+        end
+
+        def source=(new_source)
+            @source = new_source
         end
 
         def gdacs_title

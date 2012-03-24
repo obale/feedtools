@@ -67,6 +67,8 @@ paste the contents of db/migration.rb into your new migration file.
 * FeedItem::GdacsResource
 
     link
+    type
+    source
     gdacs_title
     gdacs_description
     gdacs_accesslevel
