@@ -48,7 +48,7 @@ paste the contents of db/migration.rb into your new migration file.
 
 == TODO
 
-* [DONE] Add GDACS proprietary format support. Support for ... 
+* [DONE] Add GDACS proprietary format support. 
 
     gdacs_eventname
     gdacs_alertlevel
