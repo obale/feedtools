@@ -19,11 +19,7 @@ translator with a built-in caching system.
 
 == Installation
 
-You can install FeedTools as a gem:
-
-  gem install feedtools
-  
-Or you can install it from the tarball or zip packages on the download page
+You can install it from the tarball or zip packages on the download page
 and then extract it to your vendors directory as you would with any other
 Ruby library.
 
@@ -33,7 +29,7 @@ Gemfile entry looks like:
 
 or for a special version (git tag):
 
-    gem "feedtools", :git => "git://github.com/obale/feedtools.git", :tag => "feedtools-0.2.30"
+    gem "feedtools", :git => "git://github.com/obale/feedtools.git", :tag => "feedtools-0.2.32"
  
 After installation, you will either need to run in non-caching mode or set
 up a caching mechanism.  The database feed cache system currently included
