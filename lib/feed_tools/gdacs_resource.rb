@@ -34,6 +34,7 @@ module FeedTools
             self.gdacs_description
             self.gdacs_accesslevel
             self.gdacs_acknowledgements
+            self.gdacs_xslt
         end
 
         def feed_data
@@ -174,6 +175,19 @@ module FeedTools
 
         def gdacs_acknowledgements=(new_gdacs_acknowledgements)
             @gdacs_acknowledgements = new_gdacs_acknowledgements
+        end
+
+        def gdacs_xslt
+            if @gdacs_xslt.nil?
+                @gdacs_xslt = FeedTools::HtmlHelper.unescape_entities(
+                    FeedTools::XmlHelper.try_xpaths(self.root_node,
+                                                    ["gdacs:xslt/text()"], :select_result_value => true))
+            end
+            return @gdacs_xslt
+        end
+
+        def gdacs_xslt=(new_gdacs_xslt)
+            @gdacs_xslt = new_gdacs_xslt
         end
 
         def inspect

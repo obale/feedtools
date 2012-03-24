@@ -73,7 +73,7 @@ paste the contents of db/migration.rb into your new migration file.
     gdacs_description
     gdacs_accesslevel
     gdacs_acknowledgements
-
+    gdacs_xslt
 
 == TODO
 
