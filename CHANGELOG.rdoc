@@ -1,5 +1,11 @@
 = FeedTools CHANGELOG
 
+== 0.2.32
+* Add GdacsResource object
+
+== 0.2.31
+* Add GDACS proprietary format support
+
 == 0.2.30
 * Fixing DEPRECATION warnings
 * Adding a .gemspec and Gemfile
