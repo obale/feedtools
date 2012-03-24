@@ -36,6 +36,7 @@ module FeedTools
             @root_node = nil
             @title = nil
             @id = nil
+            @gdacs_resources = nil
             @time = Time.now.gmtime
             @version = FeedTools::FEED_TOOLS_VERSION::STRING
         end
@@ -50,7 +51,16 @@ module FeedTools
             @root_node = nil
             @title = nil
             @id = nil
+            @gdacs_resources = nil
             @time = nil
+            self.gdacs_resources.each do |entry|
+                entry.instance_variable_set("@root_node", nil)
+                entry.instance_variable_set("@feed", nil)
+                entry.instance_variable_set("@parent_feed", nil)
+                entry.dispose if entry.respond_to?(:dispose)
+            end
+            self.gdacs_resources = []
+
         end
 
         # Returns the parent feed of this feed item
@@ -124,6 +134,7 @@ module FeedTools
             self.gdacs_eventid
             self.gdacs_episodeid
             self.gdacs_vulnerability
+            self.gdacs_resources
 
             self.itunes_summary
             self.itunes_subtitle
@@ -135,6 +146,10 @@ module FeedTools
             self.media_thumbnail_link
 
             self.explicit?
+
+            self.gdacs_resources.each do |entry|
+                entry.full_parse()
+            end
         end
 
         # Returns a duplicate object suitable for serialization
@@ -1682,7 +1697,7 @@ module FeedTools
             if @gdacs_eventname.nil?
                 @gdacs_eventname = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
-                        ["gdacs:eventname/text()"], :select_result_value => true))
+                                                    ["gdacs:eventname/text()"], :select_result_value => true))
             end
             return @gdacs_eventname
         end
@@ -1695,7 +1710,7 @@ module FeedTools
             if @gdacs_alertlevel.nil?
                 @gdacs_alertlevel = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
-                        ["gdacs:alertlevel/text()"], :select_result_value => true))
+                                                    ["gdacs:alertlevel/text()"], :select_result_value => true))
             end
             return @gdacs_alertlevel
         end
@@ -1708,7 +1723,7 @@ module FeedTools
             if @gdacs_country.nil?
                 @gdacs_country = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
-                        ["gdacs:country/text()"], :select_result_value => true))
+                                                    ["gdacs:country/text()"], :select_result_value => true))
             end
             return @gdacs_country
         end
@@ -1721,7 +1736,7 @@ module FeedTools
             if @gdacs_fromdate.nil?
                 @gdacs_fromdate = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
-                        ["gdacs:fromdate/text()"], :select_result_value => true))
+                                                    ["gdacs:fromdate/text()"], :select_result_value => true))
             end
             return @gdacs_fromdate
         end
@@ -1734,7 +1749,7 @@ module FeedTools
             if @gdacs_todate.nil?
                 @gdacs_todate = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
-                        ["gdacs:todate/text()"], :select_result_value => true))
+                                                    ["gdacs:todate/text()"], :select_result_value => true))
             end
             return @gdacs_todate
         end
@@ -1747,7 +1762,7 @@ module FeedTools
             if @gdacs_eventtype.nil?
                 @gdacs_eventtype = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
-                        ["gdacs:eventtype/text()"], :select_result_value => true))
+                                                    ["gdacs:eventtype/text()"], :select_result_value => true))
             end
             return @gdacs_eventtype
         end
@@ -1760,7 +1775,7 @@ module FeedTools
             if @gdacs_severity.nil?
                 @gdacs_severity = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
-                        ["gdacs:severity/text()"], :select_result_value => true))
+                                                    ["gdacs:severity/text()"], :select_result_value => true))
             end
             return @gdacs_severity
         end
@@ -1773,7 +1788,7 @@ module FeedTools
             if @gdacs_population.nil?
                 @gdacs_population = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
-                        ["gdacs:population/text()"], :select_result_value => true))
+                                                    ["gdacs:population/text()"], :select_result_value => true))
             end
             return @gdacs_population
         end
@@ -1786,7 +1801,7 @@ module FeedTools
             if @gdacs_version.nil?
                 @gdacs_version = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
-                        ["gdacs:version/text()"], :select_result_value => true))
+                                                    ["gdacs:version/text()"], :select_result_value => true))
             end
             return @gdacs_version
         end
@@ -1799,7 +1814,7 @@ module FeedTools
             if @gdacs_eventid.nil?
                 @gdacs_eventid = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
-                        ["gdacs:eventid/text()"], :select_result_value => true))
+                                                    ["gdacs:eventid/text()"], :select_result_value => true))
             end
             return @gdacs_eventid
         end
@@ -1812,7 +1827,7 @@ module FeedTools
             if @gdacs_episodeid.nil?
                 @gdacs_episodeid = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
-                        ["gdacs:episodeid/text()"], :select_result_value => true))
+                                                    ["gdacs:episodeid/text()"], :select_result_value => true))
             end
             return @gdacs_episodeid
         end
@@ -1825,13 +1840,57 @@ module FeedTools
             if @gdacs_vulnerability.nil?
                 @gdacs_vulnerability = FeedTools::HtmlHelper.unescape_entities(
                     FeedTools::XmlHelper.try_xpaths(self.root_node,
-                        ["gdacs:vulnerability/text()"], :select_result_value => true))
+                                                    ["gdacs:vulnerability/text()"], :select_result_value => true))
             end
             return @gdacs_vulnerability
         end
 
         def gdacs_vulnerability=(new_gdacs_vulnerability)
             @gdacs_vulnerability = new_gdacs_vulnerability
+        end
+
+        def <<(new_entry)
+            @entries ||= []
+            unless new_entry.kind_of? FeedTools::FeedItem::GdacsResource
+                raise ArgumentError,
+                    "You should only add GdacsResource objects to the entries array."
+            end
+            @entries << new_entry
+        end
+
+        def gdacs_resources
+            if @gdacs_resources.nil?
+                raw_entries = FeedTools::XmlHelper.select_not_blank([
+                                                                    FeedTools::XmlHelper.try_xpaths_all(self.root_node, [
+                                                                                                        "gdacs:resources/gdacs:resource"
+                ])
+                ])
+
+                @gdacs_resources = []
+                unless raw_entries.blank?
+                    for entry_node in raw_entries.reverse
+                        new_entry = GdacsResource.new
+                        new_entry.feed_data = entry_node.to_s
+                        new_entry.feed_data_type = self.feed_data_type
+                        new_entry.root_node = entry_node
+                        if new_entry.root_node.namespace.blank?
+                            new_entry.root_node.add_namespace(self.root_node.namespace)
+                        end
+                        @gdacs_resources << new_entry
+                    end
+                end
+            end
+            return @gdacs_resources
+        end
+
+        def gdacs_resources=(new_gdacs_resources)
+            for entry in new_gdacs_resources
+                unless entry.kind_of?  FeedTools::FeedItem::GdacsResource
+                    raise ArgumentError,
+                        "You should only add GdacsResource objects to the entries array."
+                end
+            end
+            @gdacs_resources = new_gdacs_resources
         end
 
         # Returns the contents of the itunes:author element

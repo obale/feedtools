@@ -170,6 +170,7 @@ begin
   
   require 'feed_tools/feed'
   require 'feed_tools/feed_item'
+  require 'feed_tools/gdacs_resource'
   require 'feed_tools/feed_structures'
   require 'feed_tools/database_feed_cache'
   

@@ -46,9 +46,9 @@ be found in the db directory.  Run
 <tt>script/generate migration add_feed_tools_tables</tt> and then copy and
 paste the contents of db/migration.rb into your new migration file.
 
-== TODO
+== GDACS Extension
 
-* [DONE] Add GDACS proprietary format support. 
+* FeedItem GDACS properties
 
     gdacs_eventname
     gdacs_alertlevel
@@ -62,6 +62,20 @@ paste the contents of db/migration.rb into your new migration file.
     gdacs_eventid
     gdacs_episodeid
     gdacs_vulnerability
+    gdacs_resources [Array]
+
+* FeedItem::GdacsResource
+
+    link
+    gdacs_title
+    gdacs_description
+    gdacs_accesslevel
+    gdacs_acknowledgements
+
+
+== TODO
+
+* [DONE] Add GDACS proprietary format support. 
 
 == Contributor
 
