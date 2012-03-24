@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
     s.homepage    = "https://github.com/obale/feedtools"
     s.summary     = "Parsing, generation, and caching system for xml news feeds."
     s.description = "Implements a simple system for handling xml news feeds with caching."
-    s.files       = Dir["{app,config,db,lib}/**/*"] + ["CHANGELOG", "Rakefile", "README"]
+    s.files       = Dir["{app,config,db,lib}/**/*"] + ["CHANGELOG", "Rakefile", "README.rdoc"]
 
     s.add_dependency 'activerecord', '>= 1.10.1'
     s.add_dependency 'uuidtools', '>= 1.0.0'
