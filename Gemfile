@@ -1,12 +1,20 @@
-source "http://rubygems.org"
+source :rubygems
 
 # Declare your gem's dependencies in semantic_crawler.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 gemspec
 
-# jquery-rails is used by the dummy application
-gem "jquery-rails"
+gem 'activerecord'
+gem 'uuidtools', '>= 1.0.0'
+gem 'builder', '>= 1.2.4'
+
+group :dev do
+    gem 'jeweler'
+    gem 'sqlite3'
+    gem 'tidy'
+    gem 'rake'
+end
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
