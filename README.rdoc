@@ -44,6 +44,10 @@ paste the contents of db/migration.rb into your new migration file.
 
 == GDACS Extension
 
+[ATTENTION] If you are using Ruby 1.9 or planing to use it in the future, this library is not working.
+
+[SOLUTION] As alternative you can use the {Semantic Crawler}[https://github.com/obale/semantic_crawler]
+
 * FeedItem GDACS properties
 
     gdacs_eventname
